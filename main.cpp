@@ -51,6 +51,25 @@ public:
     }
     delete[] visited;
   }
+  
+  void DFSUtil(int currentNode, bool visited[]) {
+  visited[currentNode] = true;
+  cout << currentNode << " ";
+  for (int neighbor : adjList[currentNode]) {
+    if (!visited[neighbor]) {
+      DFSUtil(neighbor, visited);
+      }
+    }
+  }
+
+  void DFS(int startNode) {
+    bool *visited = new bool[numNodes];
+    for (int i = 0; i < numNodes; ++i) {
+      visited[i] = false;
+    }
+    DFSUtil(startNode, visited);
+    delete[] visited;
+  }
 };
 
 int main(int argc, char const *argv[]){
