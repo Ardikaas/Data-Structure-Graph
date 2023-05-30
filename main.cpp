@@ -1,5 +1,6 @@
 #include <iostream>
 #include <list>
+#include <queue>
 
 using namespace std;
 
@@ -25,6 +26,30 @@ public:
       }
       cout << endl;
     }
+  }
+
+  void BFS(int startNode){
+    bool *visited = new bool[numNodes];
+    for(int i = 0; i < numNodes; i++){
+      visited[i] = false;
+    }
+    queue<int> q;
+    visited[startNode] = true;
+    q.push(startNode);
+
+    while(!q.empty()){
+      int currentNode = q.front();
+      cout << currentNode << " ";
+      q.pop();
+
+      for(int neighbor : adjList[currentNode]){
+        if (!visited[neighbor]){
+          visited[neighbor] = true;
+          q.push(neighbor);
+        }
+      }
+    }
+    delete[] visited;
   }
 };
 
