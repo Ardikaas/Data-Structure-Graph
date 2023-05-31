@@ -72,6 +72,15 @@ public:
   }
 };
 
+  void menu(){
+    cout << "1. Display graph" << endl;
+    cout << "2. Implementasi BFS" << endl;
+    cout << "3. Implementasi DFS" << endl;
+    cout << "4. Exit" << endl;
+    cout << "=============================" << endl;
+    cout << "Masukkan pilihan anda : ";
+  }
+
 int main(int argc, char const *argv[]){
   Graph graph(5);
   graph.addEdge(0, 1);
@@ -81,6 +90,21 @@ int main(int argc, char const *argv[]){
   graph.addEdge(1, 4);
   graph.addEdge(2, 3);
   graph.addEdge(3, 4);
-  graph.printGraph();
+
+  string choice;
+  menu();
+  cin >> choice;
+  if (choice == "1"){
+    graph.printGraph();
+  }else if (choice == "2"){
+    cout << "BFS :" << endl;
+    graph.BFS(1);
+  }else if (choice == "3"){
+    cout << "DFS :" << endl;
+    graph.DFS(1);
+  }
+
+
+  
   return 0;
 }
